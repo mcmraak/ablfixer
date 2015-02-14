@@ -34,7 +34,6 @@ class core
 
     }
     
-    
     ############## FUNCTIONS
     public function GetDirFilesR($dir){   
             $dir_iterator = new RecursiveDirectoryIterator($dir);
@@ -157,7 +156,6 @@ class core
                 } else {
                     $danger = "";
                 }
-                
                 
                 return "<div types='$scan_file' style='border-left-color:".$colors[$scan_file].";color:$ext_color' class='find virused' path='$fp'>Подозрение:[ $fp ] $danger</div>";
             }
