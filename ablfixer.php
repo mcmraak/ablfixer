@@ -59,7 +59,7 @@ class core
     
     public function savereport(){
         $path = $_SERVER['HTTP_HOST']."_abl-fixer_report.txt";        
-        $text = join("\n", $this->data);
+        $text = join("\r\n", $this->data);
         
         $faa = fopen($path, "w");
         fwrite($faa, $text);
