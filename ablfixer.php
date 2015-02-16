@@ -22,6 +22,7 @@ class core
         $patterns['Загрузчик!'] = '/'.preg_quote('@move_uploaded_file').'/';
         $patterns['Скрытая ссылка!'] = '/'.preg_quote('Array(').'\'\d+\',\'\d+\'/';
         $patterns['ШЕЛЛ! (full access)'] = '/'.preg_quote('extract(array("default_action"').'/';
+        $patterns['Блокировка ошибок!'] = '/'.preg_quote('error_reporting(').'/';
         
         foreach ($patterns as $key=>$pattern){
             preg_match($pattern, $filecode, $matches, PREG_OFFSET_CAPTURE);
