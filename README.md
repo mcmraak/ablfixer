@@ -14,3 +14,8 @@ php shell scaner
 * Позволяет просматривать, редактировать и удалять подозрительные файлы.
 * Записывает все действия в файл отчёта
 * Позволяет посмотреть вывод файла (для незащищённых паролем шеллов)
+
+## License
+
+This software is licenced under the [LGPL 2.1](http://www.gnu.org/licenses/lgpl-2.1.html). Please read LICENSE for information on the
+software availability and distribution.
