@@ -35,7 +35,7 @@ class core
         foreach ($patterns as $key=>$pattern){
             preg_match($pattern, $filecode, $matches, PREG_OFFSET_CAPTURE);
             if($matches[0][1]>0){
-                $type .= $key.", ";
+                $type .= $key.', ';
             }
         }
         $type = substr($type, 0, -2);
@@ -56,7 +56,7 @@ class core
             foreach($scaner as $v){
             if($v->isFile()){
                 $v = substr($v, 2);
-                $return .= "<file>$v</file>";
+                $return .= '<file>'.$v.'</file>';
                 }
             }
             return $return;
@@ -66,8 +66,8 @@ class core
     ############## FRONT
     
     public function savereport(){
-        $path = $_SERVER['HTTP_HOST']."_abl-fixer_report.txt";        
-        $text = join("\r\n", $this->data);
+        $path = $_SERVER['HTTP_HOST'].'_abl-fixer_report.txt';        
+        $text = join('\r\n', $this->data);
         
         $faa = fopen($path, "w");
         fwrite($faa, $text);
@@ -138,7 +138,7 @@ class core
     
     public function scanfile(){
         $fp = $this->data;
-        if($fp!=""){
+        if($fp!=''){
         if (filesize($fp)>1048576){
             return "<div class='find warning'>Файл $fp пропущен так как его размер больше 1мб.</div>";
         } else {
