@@ -1,4 +1,11 @@
 <?php
+session_start();
+
+if(!isset($_GET['201345']) && $_SESSION['auth']!='true'){
+    die();
+} else {
+    $_SESSION['auth'] = 'true';
+}
 class core
 {
     public $method, $data;
@@ -12,7 +19,8 @@ class core
     public function find_regexp($file){
         $filecode = file_get_contents($file);
         $patterns = array();
-        $patterns['Запутывание'] = '/\$[a-zA-Z0-9]{2,3}\[[0-9]\]\.\$[a-zA-Z0-9]{2,3}\[[0-9]\]/';
+        $patterns['Запутывание!'] = '/\$[a-zA-Z0-9]{2,3}\[[0-9]\]\.\$[a-zA-Z0-9]{2,3}\[[0-9]\]/';
+        $patterns['Запутывание2!'] = '/\$.*=\$.*\[.*\].*\..*\$.*=\$.*\[.*\]/';
         $patterns['Перенаправление'] = '/'.preg_quote('header("Location:').'/';
         $patterns['EVAL'] = '/'.preg_quote('eval(').'/';
         $patterns['Обфускация'] = '/[a-zA-Z0-9]{100,}/';
@@ -22,7 +30,7 @@ class core
         $patterns['Загрузчик!'] = '/'.preg_quote('@move_uploaded_file').'/';
         $patterns['Скрытая ссылка!'] = '/'.preg_quote('Array(').'\'\d+\',\'\d+\'/';
         $patterns['ШЕЛЛ! (full access)'] = '/'.preg_quote('extract(array("default_action"').'/';
-        $patterns['Блокировка ошибок!'] = '/'.preg_quote('error_reporting(').'/';
+        $patterns['Блокировка ошибок'] = '/'.preg_quote('error_reporting(').'/';
         
         foreach ($patterns as $key=>$pattern){
             preg_match($pattern, $filecode, $matches, PREG_OFFSET_CAPTURE);
